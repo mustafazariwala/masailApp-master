@@ -2,6 +2,7 @@
 
 # Custom Files
 /node_modules
+/backend
 
 # compiled output
 /dist
