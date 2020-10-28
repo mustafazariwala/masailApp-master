@@ -1,0 +1,56 @@
+<section id="main">
+    <div class="container">
+      <div class="py-5"></div>
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">البحث في مسائل امتحان الجامعة السيفية</h1>
+          <form>
+            <div class="form-group row text"  dir="rtl">
+              <label for="darajah" class="col-sm-2 col-form-label font-weight-bold">الدرجة</label>
+              <div class="col-sm-10">
+                <select class="form-control" (change)="onGetSubject($event.target.value)" [disabled]="disableAllInput">
+                  <option default> - </option>
+                  <option *ngFor="let r of class" [value]="r.id">({{r.name}}) - {{r.description}}</option>
+                </select>
+                <small id="darajah-help" class="form-text text-muted">ادخل رقم الدرجة ههنا</small>
+              </div>
+            </div>
+            <div class="form-group row text"  dir="rtl">
+              <label for="darajah" class="col-sm-2 col-form-label font-weight-bold">الموضوع</label>
+              <div class="col-sm-10">
+                <select class="form-control" (change)="onGetTopic($event.target.value)" [disabled]="disableAllInput">
+                  <option default> - </option>
+                  <option *ngFor="let r of subject" [value]="r.id">{{r.name}}</option>
+                </select>
+                <small id="darajah-help" class="form-text text-muted">ادخل رقم السنة ههنا</small>
+              </div>
+            </div>
+            <div class="form-group row text"  dir="rtl">
+              <label for="darajah" class="col-sm-2 col-form-label font-weight-bold">الذكر</label>
+              <div class="col-sm-10">
+                <select class="form-control" (change)="onGetImages($event.target.value)" [disabled]="disableAllInput">
+                  <option default> - </option>
+                  <option *ngFor="let r of topic" [value]="r.gsx$code.$t">{{r.gsx$name.$t}}</option>
+                </select>
+                <small id="darajah-help" class="form-text text-muted">ادخل رقم السنة ههنا</small>
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+      <div class="py-2"></div>  
+      <div id="result-card" class="row"  dir="rtl">
+        <div class="col-md-4 my-1" *ngFor="let r of images" ngxViewer [viewerOptions]="viewerOptions">
+          <div class="card" >
+            <div class="card-body text-center">
+              <h2>{{r.name | slice:8:12}}</h2>
+              <hr>
+              <img [src]="r.webContentLink" [alt]="r.name | slice:8:12" style="width: 100%;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="py-4"></div>  
+    </div>
+  </section>
